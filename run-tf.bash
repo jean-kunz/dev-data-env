@@ -1,3 +1,4 @@
+docker stop jean-tf
 docker rm jean-tf
 docker build  -f /data/projects/dev-data-env/docker/tf.Dockerfile -t jean/tf .
 #docker run --runtime=nvidia -u $(id -u):$(id -g) -v $(pwd):projects -it tf
