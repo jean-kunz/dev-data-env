@@ -367,9 +367,10 @@ c.Authenticator.admin_users = {'jean'}
 #  
 #  Should be a subclass of Spawner.
 #c.JupyterHub.spawner_class = 'jupyterhub.spawner.LocalProcessSpawner'
+#c.JupyterHub.spawner_class = 'dockerspawner.SystemUserSpawner'
 c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
-
-c.DockerSpawner.image = 'jean/tf'
+#c.DockerSpawner.image = 'jean/tf'
+#c.DockerSpawner.volumes=
 
 #c.Spawner.cmd = 'docker run --runtime=nvidia -d -u $(id -u):$(id -g) -v /data/projects:/projects -v /data/dataset:/dataset -p 8888:8888 -p 6006:6006 -p 6064:6064 --name jean-tf jean/tf'
 
