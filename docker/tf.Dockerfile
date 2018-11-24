@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.12.0-rc2-gpu-py3
+FROM tensorflow/tensorflow:1.12.0-gpu-py3
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash \
     && apt-get install -y nodejs
@@ -16,7 +16,7 @@ RUN pip install jupyterlab==0.34.12 \
     && jupyter labextension install jupyterlab_tensorboard
 
 
-#RUN pip install --upgrade pip
+RUN pip install --upgrade pip
 
 RUN pip install spacy \
     textacy \
@@ -28,14 +28,18 @@ RUN pip install spacy \
     pprint \
     pyyaml \
     setuptools \
-    apache-beam \
+#    apache-beam \  May create a conflict with tf regarding dependency towards protobuf.
     tensor2tensor \
     tensorflow-probability-gpu \
     tensorflow-hub \
+    tensorflow-datasets \
     pymc3
 
 
-RUN python3 -m spacy download en
+#RUN python3 -m spacy download en
+
+RUN pip install birdseye
+
 
 #RUN pip install tensorflow-data-validation
 
@@ -46,7 +50,7 @@ RUN python3 -m spacy download en
 
 
 
-EXPOSE 8888 6006 6064
+EXPOSE 8888 6006 6064 7778
 VOLUME ['/projects','/dataset','/models']
 
 WORKDIR /projects
