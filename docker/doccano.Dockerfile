@@ -14,5 +14,5 @@ RUN python manage.py migrate
 RUN python manage.py  createsuperuser --username admin --noinput \
     --email admin@banana.com
 EXPOSE 8888
-#CMD ["bash","-c","tail -f /dev/null"]
+
 CMD ["bash", "-c", "python manage.py runserver ipaddr:8888"]
